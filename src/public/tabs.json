@@ -16,11 +16,5 @@
     "title": "Dummy List",
     "order": 0,
     "path": "tabs/dummyList.js"
-  },
-  {
-    "id": "dummyForm",
-    "title": "Dummy Form",
-    "order": 3,
-    "path": "tabs/dummyForm.js"
   }
 ]

@@ -6,12 +6,13 @@ import tabsData from "./public/tabs.json";
 const DummyTable = lazy(() => import("./tabs/DummyTable"));
 const DummyChart = lazy(() => import("./tabs/DummyChart"));
 const DummyList = lazy(() => import("./tabs/DummyList"));
-const DummyForm = lazy(() => import("./tabs/DummyForm"));
+
+const sortedTabsData = tabsData.sort((a, b) => a.order - b.order);
 
 const App = () => (
   <Router>
     <div>
-      {tabsData.map((tab) => (
+      {sortedTabsData.map((tab) => (
         <Link key={tab.id} to={`/${tab.path}`}>
           {tab.title}
         </Link>
@@ -21,7 +22,7 @@ const App = () => (
 
       <Suspense fallback={<Loading />}>
         <Routes>
-          {tabsData.map((tab) => (
+          {sortedTabsData.map((tab) => (
             <Route
               key={tab.id}
               path={`/${tab.path}`}
@@ -42,8 +43,6 @@ const getComponent = (tabId) => {
       return <DummyChart />;
     case "dummyList":
       return <DummyList />;
-    case "dummyForm":
-      return <DummyForm />;
     default:
       return null;
   }
