@@ -1,7 +1,9 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loading from "./components/Loading";
 import tabsData from "./public/tabs.json";
+import { Container } from "@mui/material";
+import Header from "./components/Header";
 
 const DummyTable = lazy(() => import("./tabs/DummyTable"));
 const DummyChart = lazy(() => import("./tabs/DummyChart"));
@@ -11,27 +13,24 @@ const sortedTabsData = tabsData.sort((a, b) => a.order - b.order);
 
 const App = () => (
   <Router>
-    <div>
-      {sortedTabsData.map((tab) => (
-        <Link key={tab.id} to={`/${tab.path}`}>
-          {tab.title}
-        </Link>
-      ))}
+    <Header sortedTabsData={sortedTabsData} />
+    <br />
 
-      <hr />
-
-      <Suspense fallback={<Loading />}>
-        <Routes>
-          {sortedTabsData.map((tab) => (
-            <Route
-              key={tab.id}
-              path={`/${tab.path}`}
-              element={getComponent(tab.id)}
-            />
-          ))}
-        </Routes>
-      </Suspense>
-    </div>
+    <main>
+      <Container>
+        <Suspense fallback={<Loading />}>
+          <Routes>
+            {sortedTabsData.map((tab) => (
+              <Route
+                key={tab.id}
+                path={`/${tab.path}`}
+                element={getComponent(tab.id)}
+              />
+            ))}
+          </Routes>
+        </Suspense>
+      </Container>
+    </main>
   </Router>
 );
 
