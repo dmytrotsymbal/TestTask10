@@ -6,7 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Loading from "./components/Loading";
-import tabsData from "./public/tabs.json";
+import tabsData from "./src/tabs.json";
 import { Container } from "@mui/material";
 import Header from "./components/Header";
 
