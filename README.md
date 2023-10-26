@@ -18,4 +18,4 @@ npm install
 
 ## Live 🌐
 
-[https://fascinating-faloodeh-9d575a.netlify.app/tabs/DummyList](https://fascinating-faloodeh-9d575a.netlify.app/tabs/DummyList)
+[https://fascinating-faloodeh-9d575a.netlify.app/](https://fascinating-faloodeh-9d575a.netlify.app/)
